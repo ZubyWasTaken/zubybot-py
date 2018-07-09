@@ -64,7 +64,7 @@ Your config **MUST** contain at least the following:
 
 ```
 TOKEN = 'YOUR BOT TOKEN' # This is your bot token.
-NAME_ID = '227965652961329153' # This will be the ID of the account of the user.
+NAME_ID = 'USER_ID' # This will be the ID of the account of the user.
 ```
 
 Next in bot.py you must import the config file.
