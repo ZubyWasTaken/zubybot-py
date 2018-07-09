@@ -206,16 +206,11 @@ async def on_message(message):
         while role is None:  # sometimes the role isn't made before it tries to get it, so keep looping round until its made
             role = discord.utils.get(message.server.roles, name=colourName)
 
-        while True:
-            numberRoles = len(
-                message.server.roles) - 4  # gets number of roles in the server and take two (the bot will be 1st or second highest)
-            await client.move_role(message.server, role,
-                                   position=numberRoles)  # move the role to a higher point so that it shows above other roles
-
-            await client.add_roles(message.author, role)  # add the role to the user
-            break
-            if discord.Forbidden:
-                await client.send_message(message.channel, "Role not added.")
+        numberRoles = len(
+            message.server.roles) - 3  # get the number of roles in the server and take two (the bot will be 1st or second highest)
+        await client.move_role(message.server, role,
+                               position=numberRoles)  # move the role to a higher point so that it shows above other roles
+        await client.add_roles(message.author, role)  # add the role to the user
 
 
 
