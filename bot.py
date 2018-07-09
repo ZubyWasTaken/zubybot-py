@@ -204,7 +204,7 @@ async def on_message(message):
                                position=numberRoles)  # move the role to a higher point so that it shows above other roles
         '''
         await client.add_roles(message.author, role)  # add the role to the user
-        await client.send_message(message.channel, 'I have added color **' + colourName + '** to user ' + user.mention)
+        await client.send_message(message.channel, 'I have added color **' + colourName + '** to user ' + message.author.mention)
 
 @client.event
 async def on_ready():
