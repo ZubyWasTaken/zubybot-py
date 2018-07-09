@@ -15,21 +15,16 @@ botStartTime = datetime.datetime.now()
 t0 = time.time()
 coloursFile = 'colours.json'
 
-nigelID = '164866153271787520'  # user id of Zuby
-zubyID = '227965652961329153'  # user id of Nigel
-
-
 def embedMaker(type):
     currenttime = time.time()
     if type == 1:
-        embed = discord.Embed(title="Commands: ",
-                              description="!color <name>\n\n Colors located at: http://www.zubyk.co.uk",
+        embed = discord.Embed(title="Help",
+                              description="The commands are:\n!color <name>\n\n Colors located at: https://www.zubyk.co.uk/",
                               colour=discord.Colour(0xa020f0),
                               timestamp=datetime.datetime.utcfromtimestamp(currenttime))
-        # embed.set_image(url="https://i.imgur.com/ANWCb5m.png")
-        embed.set_author(name="Help",
+        embed.set_author(name="Zuby Bot",
                          icon_url="https://i.imgur.com/jqIsh9f.png")
-        embed.set_footer(text="zuby-bot",
+        embed.set_footer(text="Zuby Bot",
                          icon_url="https://i.imgur.com/jqIsh9f.png")
         return embed
 
@@ -93,7 +88,7 @@ async def on_message(message):
             return
 
     if message.content.startswith('!deletecolor'):  # to delete a colour from the file
-        if message.author.id in [zubyID, nigelID]:
+        if message.author.id in [config.zubyID, config.nigelID]:
             command = ''.join(message.content.split('!deletecolor ',
                                                     1))  # splitting the first bit of the message off, as we don't need it
             data = []
@@ -133,7 +128,7 @@ async def on_message(message):
             return
 
     elif message.content.startswith('!deleterole'):
-        if message.author.id in [zubyID, nigelID]:
+        if message.author.id in [config.zubyID, config.nigelID]:
             command = ''.join(message.content.split('!deleterole ',
                                                     1))  # splitting the first bit of the message off, as we don't need it
             if len(command.split(" ")) < 1:  # checking if there are enough arguments
@@ -202,13 +197,13 @@ async def on_message(message):
                                  name=colourName)  # get the role that we either just made or already existed
         while role is None:  # sometimes the role isn't made before it tries to get it, so keep looping round until its made
             role = discord.utils.get(message.server.roles, name=colourName)
-
+        '''
         numberRoles = len(
             message.server.roles) - 3  # get the number of roles in the server and take two (the bot will be 1st or second highest)
         await client.move_role(message.server, role,
                                position=numberRoles)  # move the role to a higher point so that it shows above other roles
         await client.add_roles(message.author, role)  # add the role to the user
-
+        '''
 
 @client.event
 async def on_ready():
