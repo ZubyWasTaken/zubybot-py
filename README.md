@@ -1,5 +1,5 @@
 # zubybot-py
-## A Discord bot written in Python 3.x using Discord.py
+## A Discord Color Bot written in Python 3.x using Discord.py
 
 ###### Commands
 
