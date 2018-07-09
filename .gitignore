@@ -1,4 +1,4 @@
-*.json
+colours.json
 node_modules
 .idea
 config.py
