@@ -15,6 +15,7 @@ botStartTime = datetime.datetime.now()
 t0 = time.time()
 coloursFile = 'colours.json'
 
+
 def embedMaker(type):
     currenttime = time.time()
     if type == 1:
@@ -195,16 +196,19 @@ async def on_message(message):
 
         role = discord.utils.get(message.server.roles,
                                  name=colourName)  # get the role that we either just made or already existed
-        while role is None:  # sometimes the role isn't made before it tries to get it, so keep looping round until its made
+        if role is None:  # sometimes the role isn't made before it tries to get it, so keep looping round until its made
             role = discord.utils.get(message.server.roles, name=colourName)
-        '''
+
+        await client.add_roles(message.author, role)  # add the role to the user
+
         numberRoles = len(
             message.server.roles) - 3  # get the number of roles in the server and take two (the bot will be 1st or second highest)
         await client.move_role(message.server, role,
                                position=numberRoles)  # move the role to a higher point so that it shows above other roles
-        '''
-        await client.add_roles(message.author, role)  # add the role to the user
-        await client.send_message(message.channel, 'I have added color **' + colourName + '** to user ' + message.author.mention)
+
+        await client.send_message(message.channel,
+                                  'I have added color **' + colourName + '** to user ' + message.author.mention)
+
 
 @client.event
 async def on_ready():
