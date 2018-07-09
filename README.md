@@ -1,6 +1,14 @@
 # zubybot-py
-A Discord bot written in Python using Discord.py
+## A Discord bot written in Python 3.x using Discord.py
 
-For the bot to create and move roles you MUST give the bot Admin.
-Once all the roles have been created, you are free to remove admin.
-You must give the bot every other permission aside from Admin from this point.
+###### Commands
+
+The commands of this bot are:
+>1. !coloradd <hex value> <color name>
+>2. !deletecolor <hex value> <color name>
+>3. !deleterole <role name>
+>4. !color <color name>
+>5. !help
+  
+###### How each command works.
+
