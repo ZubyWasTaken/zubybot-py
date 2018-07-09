@@ -12,9 +12,9 @@ The commands of this bot are:
   
 ###### Commands that only a certain user(s) can use.
 
->!coloradd
->!deletecolor
->!deleterole - **CANNOT REVERSE THIS ACTION**
+>1. !coloradd
+>2. !deletecolor
+>3. !deleterole - **CANNOT REVERSE THIS ACTION**
 
 ###### How to edit people who can access certain commands or convert a command to certain users.
 
@@ -34,8 +34,8 @@ if message.content.startswith('!deletecolor'):
 
 ###### Commands useable by everyone.
 
->!color
->!help
+>4. !color
+>5. !help
 
 ###### How to edit !help.
 
