@@ -7,6 +7,7 @@ import datetime
 import time
 import json
 import os.path
+import config
 
 client = discord.Client()
 botStartTime = datetime.datetime.now()
@@ -16,8 +17,6 @@ coloursFile = 'colours.json'
 
 nigelID = '164866153271787520'  # user id of Zuby
 zubyID = '227965652961329153'  # user id of Nigel
-
-TOKEN = 'BOT_TOKEN'
 
 
 def embedMaker(type):
@@ -42,14 +41,12 @@ async def on_message(message):
         return
 
     if message.content.startswith('!help'):
-        if message.author.id in [zubyID, nigelID]:  # if the author ID of the message sender matches IDs
-            embed = embedMaker(1)  # Function to setup the embed message title etc
-            await client.send_message(message.channel, embed=embed)
-        else:
-            return
+        embed = embedMaker(1)  # Function to setup the embed message title etc
+        await client.send_message(message.channel, embed=embed)
+
 
     elif message.content.startswith('!addcolor'):  # to add colours to the colour file
-        if message.author.id in [zubyID, nigelID]:
+        if message.author.id in [config.zubyID, config.nigelID]:
 
             command = ''.join(message.content.split('!addcolor ',
                                                     1))  # splitting the first bit of the message off, as we don't need it
@@ -213,8 +210,6 @@ async def on_message(message):
         await client.add_roles(message.author, role)  # add the role to the user
 
 
-
-
 @client.event
 async def on_ready():
     print('Logged in as')
@@ -224,4 +219,4 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name="!help in #colors for help."))
 
 
-client.run(TOKEN)
+client.run(config.TOKEN)
