@@ -202,8 +202,9 @@ async def on_message(message):
             message.server.roles) - 3  # get the number of roles in the server and take two (the bot will be 1st or second highest)
         await client.move_role(message.server, role,
                                position=numberRoles)  # move the role to a higher point so that it shows above other roles
-        await client.add_roles(message.author, role)  # add the role to the user
         '''
+        await client.add_roles(message.author, role)  # add the role to the user
+
 
 @client.event
 async def on_ready():
