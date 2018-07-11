@@ -13,9 +13,10 @@ client = discord.Client()
 botStartTime = datetime.datetime.now()
 
 t0 = time.time()
-coloursFile = 'colours.json'
+coloursFile = 'colours.json' # This is the file that the colors will be saved to.
 
 
+# This function makes embeds
 def embedMaker(type):
     currenttime = time.time()
     if type == 1:
@@ -36,13 +37,13 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('!help'):
+    if message.content.startswith('!help'):  # help command
         embed = embedMaker(1)  # Function to setup the embed message title etc
-        await client.send_message(message.channel, embed=embed)
+        await client.send_message(message.channel, embed=embed) # Sends embed
 
 
     elif message.content.startswith('!addcolor'):  # to add colours to the colour file
-        if message.author.id in [config.zubyID, config.nigelID]:
+        if message.author.id in [config.zubyID, config.nigelID]:  # only these user ID's can do this command
 
             command = ''.join(message.content.split('!addcolor ',
                                                     1))  # splitting the first bit of the message off, as we don't need it
@@ -89,7 +90,7 @@ async def on_message(message):
             return
 
     if message.content.startswith('!deletecolor'):  # to delete a colour from the file
-        if message.author.id in [config.zubyID, config.nigelID]:
+        if message.author.id in [config.zubyID, config.nigelID]:  # only these user ID's can do this command
             command = ''.join(message.content.split('!deletecolor ',
                                                     1))  # splitting the first bit of the message off, as we don't need it
             data = []
